@@ -1,3 +1,5 @@
+SET serveroutput ON;
+
 DECLARE 
    message  varchar2(20):= 'Hello, World!'; 
 BEGIN 
@@ -15,6 +17,20 @@ END;
 /
 
 ---------------------------------------------------------------------------------------------------------
+
+DECLARE 
+   SUBTYPE name IS char(20); 
+   SUBTYPE message IS varchar2(100); 
+   salutation name; 
+   greetings message; 
+BEGIN 
+   salutation := 'Iqbal Hossain '; 
+   greetings := 'Welcome to the World of PL/SQL'; 
+   dbms_output.put_line('Hello ' || salutation || greetings); 
+END; 
+/
+
+------------------------------------------------------------------------------------------------------------
 
 create or replace PROCEDURE EMP_LIST
 IS
