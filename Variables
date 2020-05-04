@@ -31,3 +31,49 @@ BEGIN
    END;  
 END; 
 / 
+
+-----------------------------SQL Query Results to PL/SQL Variables-----------------------------------
+
+CREATE TABLE CUSTOMER( 
+   ID   INT NOT NULL, 
+   NAME VARCHAR (20) NOT NULL, 
+   AGE INT NOT NULL, 
+   ADDRESS CHAR (25), 
+   SALARY   DECIMAL (18, 2),        
+   PRIMARY KEY (ID) 
+);
+
+
+INSERT INTO CUSTOMER (ID,NAME,AGE,ADDRESS,SALARY) 
+VALUES (1, 'Ramesh', 32, 'Ahmedabad', 2000.00 );  
+
+INSERT INTO CUSTOMER (ID,NAME,AGE,ADDRESS,SALARY) 
+VALUES (2, 'Khilan', 25, 'Delhi', 1500.00 );  
+
+INSERT INTO CUSTOMER (ID,NAME,AGE,ADDRESS,SALARY) 
+VALUES (3, 'kaushik', 23, 'Kota', 2000.00 );
+  
+INSERT INTO CUSTOMER (ID,NAME,AGE,ADDRESS,SALARY) 
+VALUES (4, 'Chaitali', 25, 'Mumbai', 6500.00 ); 
+ 
+INSERT INTO CUSTOMER (ID,NAME,AGE,ADDRESS,SALARY) 
+VALUES (5, 'Hardik', 27, 'Bhopal', 8500.00 );  
+
+INSERT INTO CUSTOMER (ID,NAME,AGE,ADDRESS,SALARY) 
+VALUES (6, 'Komal', 22, 'MP', 4500.00 ); 
+
+------------------------------------------------------SELECT INTO clause-------------------------------
+
+DECLARE 
+   c_id customer.id%type := 1; 
+   c_name  customer.name%type; 
+   c_addr customer.address%type; 
+   c_sal  customer.salary%type; 
+BEGIN 
+   SELECT name, address, salary INTO c_name, c_addr, c_sal 
+   FROM customer 
+   WHERE id = c_id;  
+   dbms_output.put_line('Customer ' ||c_name || ' from ' || c_addr || ' earns ' || c_sal); 
+END; 
+/ 
+
